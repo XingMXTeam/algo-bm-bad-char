@@ -1,6 +1,6 @@
 const SIZE = 256;
 
-function generateBC(bc: Array<Number>, b) {
+function generateBC(bc: Array<number>, b: string) {
   for (let i = 0; i < b.length; i++) {
     const ascii = b[i].charCodeAt(0); // 转成b[i]的ASCII值
     bc[ascii] = i;
