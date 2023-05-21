@@ -7,6 +7,10 @@
     "pnpm run test:ui": {
       "name": "npm run test:ui",
       "command": "npm run test:ui"
+    },
+    "preview": {
+      "port": 51205,
+      "prLink": "direct"
     }
   }
 }
