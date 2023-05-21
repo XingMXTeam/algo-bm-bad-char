@@ -1,0 +1,19 @@
+{
+  "name": "jest-template",
+  "version": "1.0.0",
+  "description": null,
+  "main": "src/index.ts",
+  "dependencies": {
+    "jest": "25.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": [
+    "typescript",
+    "mxx",
+    "jest",
+    "template"
+  ]
+}
