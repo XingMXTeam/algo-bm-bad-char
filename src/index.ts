@@ -26,7 +26,6 @@ function bm(a: string, b: string) {
     // 模式串从后往前匹配
     for (j = m - 1; j >= 0; j--) {
       // 不匹配。 下标j是坏字符在模式串的位置
-      console.log("a[i + j]", a[i + j], "b[j]", b[j]);
       if (a[i + j] !== b[j]) {
         break;
       }

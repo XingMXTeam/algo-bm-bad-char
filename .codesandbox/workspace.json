@@ -3,20 +3,7 @@
     {
       "views": [
         {
-          "id": "codesandbox.tests"
-        },
-        {
           "id": "codesandbox.browser"
-        }
-      ]
-    },
-    {
-      "views": [
-        {
-          "id": "codesandbox.console"
-        },
-        {
-          "id": "codesandbox.problems"
         }
       ]
     }
