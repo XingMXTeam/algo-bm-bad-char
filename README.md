@@ -1,2 +1,2 @@
-# algo-bm-bad-char
+# algo
 Created with CodeSandbox
