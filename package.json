@@ -1,7 +1,7 @@
 {
-  "name": "jest-template",
+  "name": "algo",
   "version": "1.0.0",
-  "description": null,
+  "description": "this is algo learn implemented by typescript, using vitest test framework",
   "main": "src/index.ts",
   "scripts": {
     "test": "vitest",
@@ -13,6 +13,7 @@
     "@vitest/coverage-c8": "^0.31.1",
     "@vitest/ui": "^0.31.1",
     "jest": "^29.5.0",
+    "prettier": "2.8.8",
     "vite": "^4.3.8",
     "vitest": "^0.31.1"
   },
