@@ -1,4 +1,4 @@
-import   { BM_BC_TestFunction, BMTestFunction, kmp_TestFunction, trie_TestFunction } from "./index";
+import   { BM_BC_TestFunction, BMTestFunction, kmp_TestFunction, trie_TestFunction, rk_TestFunction } from "./index";
 import {  expect, test } from 'vitest'
 
 
@@ -17,4 +17,8 @@ test("kmp - it works", () => {
 
 test("trie - exact match", () => {
   expect(trie_TestFunction()).toBe(true);
+});
+
+test("rk - it works", () => {
+  expect(rk_TestFunction()).toBe(1);
 });

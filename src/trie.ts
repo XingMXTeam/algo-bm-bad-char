@@ -13,7 +13,6 @@ const createTrie = () => {
     let p = root;
     Array.from(words).forEach((c: string) => {
       let index: number = c.charCodeAt(0) - "a".charCodeAt(0);
-      console.log("ttt", c, index)
       // 创建新节点
       if (p.children[index] === null) {
         p.children[index] = createTrieNode(c);
@@ -21,7 +20,7 @@ const createTrie = () => {
       // 指向新节点
       p = p.children[index];
     });
-    // 叶子节点
+    // 标记为单词结束节点
     p.isEndingChar = true;
   };
   const find = (pattern: string) => {
@@ -34,7 +33,7 @@ const createTrie = () => {
       p = p.children[index]; // found
     });
     if (p.isEndingChar === false) return false; // 不能完全匹配
-    return true; //到叶子节点了。完全匹配
+    return true; //找到单词。完全匹配
   };
 
   return {
