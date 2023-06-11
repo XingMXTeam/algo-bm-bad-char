@@ -43,20 +43,15 @@ function bm_bc(a: string, b: string) {
   return -1; // 没找到匹配的
 }
 
-export function BM_BC_TestFunction() {
-  const a = "abcacabdc";
-  const b = "abd";
-  const result = bm_bc(a, b);
-  console.log(result);
-  return result;
-}
-
 
 // 通过以上三个图， 我们要计算右移的位数，需要知道
 // 好后缀字符串{u} 和 另一个字串{u*} 匹配的下标，也就是x
 // 我们构建一个数组suffix[子串的长度] = x
 /**
  * @param b 模式串
+ * @param suffix
+ * @param prefix
+ * @param m
  */
 function generateSuffix(b: string, suffix: number[], prefix: boolean[], m) {
   for(let i = 0; ui < m - 1; i++) { // 遍历b
@@ -134,6 +129,13 @@ function bm(a: string, b: string) {
 
 
 export function BMTestFunction() {
+  const a = "abcacabdc";
+  const b = "abd";
+  const result = bm(a, b);
+  console.log(result);
+  return result;
+}
+export function BM_BC_TestFunction() {
   const a = "abcacabdc";
   const b = "abd";
   const result = bm_bc(a, b);
