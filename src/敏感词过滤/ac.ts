@@ -72,22 +72,24 @@ function buildFailurePointer(root) {
 
 function match(root, text) {
   const n = text.length;
-  let p = root;
-  for (let i = 0; i < n; i++) {
-    const idx = text[i].charCodeAt(0) - "a".charCodeAt(0);
-    while (p.children[idx] === null && p !== root) {
+  let p = root; // 从根节点开始
+  for (let i = 0; i < n; i++) { // 扫一遍主串
+    const idx = text[i].charCodeAt(0) - "a".charCodeAt(0); // 获得当前字符的数组索引
+    while (p.children[idx] === null && p !== root) {// 和主串不相等，则通过失败指针查找
       p = p.fail;
     }
-    p = p.children[idx];
-    if (p === null) {
+    p = p.children[idx]; // 层序遍历，指向子节点
+    if (p === null) { // 如果没有可匹配的，则从root重新开始匹配
       p = root;
     }
-    let tmp = p;
-    while (tmp !== root) {
-      if (tmp.isEndingChar) {
+    // 检测一系列失败指针为结尾的路径是否模式串，如果是，则此模式串就是感敏词
+    let tmp = p;// 子节点不为空
+    while (tmp !== root) { // 直到指针指向根节点
+      if (tmp.isEndingChar) { // 判断是否是模式串，如果是，表示该模式串是敏感词，则打印结果
         const pos = i - tmp.length + 1;
         console.log("起始下标，",pos, "长度", tmp.length);
       }
+      // 否则， 继续循着失败指针查找
       tmp = tmp.fail;
     }
   }
@@ -102,8 +104,9 @@ export function ac_TestFunction() {
     insert("bcd");
     insert("abcd");
 
-    buildFailurePointer(root)
-    match(root, "abcd")
+    buildFailurePointer(root); //
+    // match(root, "abcd")
+    match(root, "afe")
 
     return null
 }

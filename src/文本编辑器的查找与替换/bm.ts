@@ -54,7 +54,7 @@ function bm_bc(a: string, b: string) {
  * @param m
  */
 function generateSuffix(b: string, suffix: number[], prefix: boolean[], m) {
-  for(let i = 0; ui < m - 1; i++) { // 遍历b
+  for(let i = 0; i < m - 1; i++) { // 遍历b
     let j = i;
     let k = 0; // 公共后缀子串的长度
     // 头尾元素比较，如果相等，则头元素往前移动，继续比较两位，三位长度
