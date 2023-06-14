@@ -51,6 +51,7 @@ export function trie_TestFunction() {
   insert("banana");
   insert("bat");
   insert("cat");
+  // 某一个串是否在trie树中
   const result = find("app");
   console.log(result);
   return result

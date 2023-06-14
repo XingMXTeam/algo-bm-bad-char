@@ -50,10 +50,10 @@ function buildFailurePointer(root) {
       }
       if (p === root) { // 根节点的所有子节点的fail指针都指向根节点
         pc.fail = root;
-      } 
+      }
       else { // 不是根节点，也就是p
         let q = p.fail;// 当前节点的失败指针的位置
-        while (q !== null) { 
+        while (q !== null) {
           const qc = q.children[pc.data.charCodeAt(0) - "a".charCodeAt(0)];
           if (qc !== null) { // qc存在，则把pc的失败指针指向qc，并且结束寻找
             pc.fail = qc;
@@ -108,7 +108,7 @@ export function ac_TestFunction() {
     insert("bcd");
     insert("abcd");
 
-    buildFailurePointer(root); 
+    buildFailurePointer(root);
     match(root, "abcd")
     return null
 }
