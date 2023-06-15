@@ -1,4 +1,4 @@
-import   { BM_BC_TestFunction, BMTestFunction, kmp_TestFunction, trie_TestFunction, rk_TestFunction, ac_TestFunction } from "./index";
+import   { BM_BC_TestFunction, BMTestFunction, kmp_TestFunction, trie_TestFunction, rk_TestFunction, ac_TestFunction, hf_TestFunction } from "./index";
 import {  expect, test } from 'vitest'
 
 
@@ -26,4 +26,8 @@ test("搜索关键词提示功能：trie - it works", () => {
 
 test("敏感词过滤：ac - it works", () => {
   expect(ac_TestFunction()).toBe(null);
+});
+
+test("霍夫曼编码：hf - it works", () => {
+  expect(hf_TestFunction()).toBe(null);
 });
