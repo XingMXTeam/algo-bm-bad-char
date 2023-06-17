@@ -96,7 +96,6 @@ function match(root, text) {
       tmp = tmp.fail;
     }
   }
-  return result;
 }
 
 

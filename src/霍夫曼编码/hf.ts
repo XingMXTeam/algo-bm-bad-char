@@ -1,6 +1,6 @@
-const createNode = (symbol, frequency) => {
+const createNode = (char, frequency) => {
     return {
-        symbol,
+        char,
         frequency,
         left: null,
         right: null
@@ -9,10 +9,9 @@ const createNode = (symbol, frequency) => {
 
 const buildHuffmanTree = (data) => {
 
-    // 创建叶子节点
-    const nodes = Object.entries(data).map(([symbol, value]) => {
-
-        return createNode(symbol, data[symbol])
+    // 保存频率升序排列的节点数组
+    const nodes = Object.entries(data).map(([char, value]) => {
+        return createNode(char, data[char])
     })
 
     // 构建霍夫曼树
@@ -25,27 +24,29 @@ const buildHuffmanTree = (data) => {
         parent.left = left;
         parent.right = right;
         nodes.push(parent)
-        console.log('nodes', nodes)
     }
 
     // root节点
     return nodes[0]
-
 }
 
 
 const buildHuffmanTable = root => {
     const huffmanTable = {}
-    const  tranverse = (node, code) => {
-        if(node.symbol) { // 叶子节点
-            huffmanTable[node.symbol] = code
+
+    // 遍历边: 前序遍历
+    const  traverse = (node, code) => {
+        if(node.char) { // 叶子节点
+            console.log('node.char', node.char)
+            huffmanTable[node.char] = code
         }
         else { // 非叶子节点
-            tranverse(node.left, code +'0')
-            tranverse(node.right, code + '1')
+            traverse(node.left, code + '0')
+            traverse(node.right, code + '1')
         }
     }
-    tranverse(root, '')
+    traverse(root, '');
+    console.log('hu', huffmanTable)
     return huffmanTable
 }
 
@@ -63,15 +64,15 @@ function huffmanEncoding(data) {
 
 export function hf_TestFunction() {
     const data = {
-        'A': 5,
-        'B': 9,
-        'C': 12,
-        'D': 13,
-        'E': 16,
-        'F': 45,
+        'a': 450,
+        'b': 350,
+        'c': 90,
+        'd': 60,
+        'e': 30,
+        'f': 20,
     };
 
     const encodedData = huffmanEncoding(data);
     console.log(encodedData);
-    return true;
+    return null;
 }
