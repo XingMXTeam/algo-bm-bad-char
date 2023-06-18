@@ -10,13 +10,6 @@ const mergeSort = (data, p, r) => {
     merge(data, p, q, r)
 }
 
-/**
- *
- * @param data
- * @param p
- * @param q
- * @param r
- */
 const merge = (data, p, q, r) => {
     const temp = new Array(r-p+1);
     let i = p;

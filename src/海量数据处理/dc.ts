@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path')
 
 // Step 1: Divide the file into smaller partitions based on order amounts
 function partitionFile(inputFilePath, outputDirPath, callback) {
@@ -47,7 +48,6 @@ function sortPartitions(inputDirPath, outputDirPath, callback) {
         files.forEach((file) => {
             const filePath = `${inputDirPath}/${file}`;
             const sortedFilePath = `${outputDirPath}/sorted_${file}`;
-
             // Read the orders from the partition file
             const orders = fs.readFileSync(filePath, { encoding: 'utf8' }).split('\n');
 
@@ -67,51 +67,52 @@ function sortPartitions(inputDirPath, outputDirPath, callback) {
 }
 
 // Step 3: Merge the sorted partitions
+function mergePartitions(inputDirPath, outputFilePath) {
 
-// Step 1: Perform merge sort on an array of numbers
-function mergeSort(arr) {
-    if (arr.length <= 1) {
-        return arr;
+
+    // Step 1: Perform merge sort on an array of numbers
+    function mergeSort(arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+
+        const mid = Math.floor(arr.length / 2);
+        const left = arr.slice(0, mid);
+        const right = arr.slice(mid);
+
+        return merge(mergeSort(left), mergeSort(right));
     }
 
-    const mid = Math.floor(arr.length / 2);
-    const left = arr.slice(0, mid);
-    const right = arr.slice(mid);
+    // Step 2: Merge two sorted arrays
+    function merge(left, right) {
+        let merged = [];
+        let i = 0;
+        let j = 0;
 
-    return merge(mergeSort(left), mergeSort(right));
-}
+        while (i < left.length && j < right.length) {
+            // 读取文件标题后面的数字
+            if (parseFloat(left[i].split(',')[1]) <= parseFloat(right[j].split(',')[1])) {
+                merged.push(left[i]);
+                i++;
+            } else {
+                merged.push(right[j]);
+                j++;
+            }
+        }
 
-// Step 2: Merge two sorted arrays
-function merge(left, right) {
-    let merged = [];
-    let i = 0;
-    let j = 0;
-
-    while (i < left.length && j < right.length) {
-        if (parseFloat(left[i].split(',')[1]) <= parseFloat(right[j].split(',')[1])) {
+        while (i < left.length) {
             merged.push(left[i]);
             i++;
-        } else {
+        }
+
+        while (j < right.length) {
             merged.push(right[j]);
             j++;
         }
+
+        return merged;
     }
 
-    while (i < left.length) {
-        merged.push(left[i]);
-        i++;
-    }
-
-    while (j < right.length) {
-        merged.push(right[j]);
-        j++;
-    }
-
-    return merged;
-}
-
-// Step 3: Merge the sorted partitions
-function mergePartitions(inputDirPath, outputFilePath) {
     const filePointers = [];
     let mergedOutput = '';
 
@@ -138,12 +139,14 @@ function mergePartitions(inputDirPath, outputFilePath) {
         fs.writeFileSync(outputFilePath, mergedOutput, { encoding: 'utf8' });
 
         // Delete the temporary partition files
-        files.forEach((file) => {
-            const filePath = path.join(inputDirPath, file);
-            fs.unlinkSync(filePath);
-        });
+        // files.forEach((file) => {
+        //     const filePath = path.join(inputDirPath, file);
+        //     fs.unlinkSync(filePath);
+        // });
     });
 }
+
+
 // Entry point
 function sortLargeOrderFile(inputFilePath, outputFilePath) {
     const inputDirPath = './temp/input';
