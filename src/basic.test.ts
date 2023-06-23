@@ -6,7 +6,8 @@ import {
   rk_TestFunction,
   ac_TestFunction,
   hf_TestFunction,
-    ms_test_function
+  ms_test_function,
+  dy_test_function,
 } from "./index";
 import { expect, test } from "vitest";
 
@@ -40,4 +41,8 @@ test("文件压缩：hf - it works", () => {
 
 test("海量数据处理: merge sort - it works", () => {
   expect(ms_test_function()).toBe(true);
+});
+
+test("双11凑单问题: dy - it works", () => {
+  expect(dy_test_function()).toBe(true);
 });
