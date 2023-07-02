@@ -8,6 +8,7 @@ import {
   hf_TestFunction,
   ms_test_function,
   dy_test_function,
+  graph_test_function
 } from "./index";
 import { expect, test } from "vitest";
 
@@ -45,4 +46,9 @@ test("海量数据处理: merge sort - it works", () => {
 
 test("双11凑单问题: dy - it works", () => {
   expect(dy_test_function()).toBe(true);
+});
+
+
+test("社交网络关系: graph - it works", () => {
+  expect(graph_test_function()).toBe(true);
 });
