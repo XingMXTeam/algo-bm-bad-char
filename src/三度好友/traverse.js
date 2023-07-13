@@ -15,7 +15,7 @@ function bfs(adj, s, t) {
   while (queue.length !== 0) {
     const w = queue.shift();
     for (let i = 0; i < adj[w].length; i++) {
-      const q = adj[w][i];
+      const q = adj[w][i]; // adj[w].get(i) 但是链表取i不方便，所以可以改为跳表
       if (!visited[q]) {
         prev[q] = w;
         if (q === t) {
