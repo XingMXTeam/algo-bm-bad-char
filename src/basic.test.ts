@@ -9,6 +9,7 @@ import {
   ms_test_function,
   dy_test_function,
   // graph_test_function
+  graph_bfs_function
 } from "./index";
 import { expect, test } from "vitest";
 import {SkipList} from "./社交网络关系/skipList";
@@ -61,3 +62,6 @@ test("测试跳表: skipList - it works", () => {
 // test("社交网络关系: graph - it works", () => {
 //   expect(graph_test_function()).toBe(true);
 // });
+test("三度好友: graph - it works", () => {
+  expect(graph_bfs_function()).toBe(true);
+});
